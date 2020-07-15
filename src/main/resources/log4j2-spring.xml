@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration xmlns="http://logging.apache.org/log4j/2.0/config">
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss:SSS} %p  [%15t] %-70c  : %m%n"/>
+        </Console>
+
+        <RollingFile name="allError" fileName="../log/allError/allError.log"
+                     filePattern="../log/allError/allError-%i.log">
+            <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss:SSS} %p  [%15t] %-70c  : %m%n"/>
+            <SizeBasedTriggeringPolicy size="10MB"/>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="console"></AppenderRef>
+            <Appender-Ref ref="allError"></Appender-Ref>
+        </Root>
+    </Loggers>
+</Configuration>
