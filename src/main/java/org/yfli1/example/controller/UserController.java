@@ -27,10 +27,9 @@ public class UserController {
     }
 
     @GetMapping("/user")
-    public String getUser() {
+    public User getUser() {
         log.info("getUser");
-//        User user = userService.getUser();
-//        return user;
-        return "ok";
+        User user = userService.getUser();
+        return user;
     }
 }
